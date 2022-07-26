@@ -1,0 +1,15 @@
+.speedDial {
+    position: fixed;
+    right: 3vmax;
+    top: 3vmax;
+  }
+  
+  .speedDialIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+  }
+  #root > div.menuBurger > div:nth-child(1), #root > div.menuBurger > div:nth-child(2), #root > div.menuBurger > div:nth-child(3){
+    /* background-color: none; */
+    background-color: #EB4034 !important;
+  }
