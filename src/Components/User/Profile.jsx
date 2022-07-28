@@ -24,21 +24,21 @@ const Profile = () => {
             <div className="profileContainer">
               <div>
                 <h1>My Profile</h1>
-                <img src={profileImg} alt={user.user.name} />
+                <img src={profileImg} alt={user.name} />
                 <Link to="/profile/update">Edit Profile</Link>
               </div>
               <div>
                 <div>
                   <h4>Full Name</h4>
-                  <p>{user.user.name}</p>
+                  <p>{user.name}</p>
                 </div>
                 <div>
                   <h4>Email</h4>
-                  <p>{user.user.email}</p>
+                  <p>{user.email}</p>
                 </div>
                 <div>
                   <h4>Joined On</h4>
-                  <p>{String(user.user.createdAt).substr(0, 10)}</p>
+                  <p>{String(user.createdAt).substr(0, 10)}</p>
                 </div>
   
                 <div>

@@ -6,7 +6,6 @@ import { useNavigate} from 'react-router-dom';
 import './UpdateProfile.css'
 import { UPDATE_PROFILE_RESET } from "../../Redux/Constants/UserConstants";
 import { loadUser, updateProfile } from "../../Redux/Actions/UserAction";
-// import { UPDATE_PROFILE_RESET } from "../../Redux/Constants/UserConstants";
 
 const UpdateProfile = () => {
   const dispatch = useDispatch();
@@ -23,19 +22,19 @@ const UpdateProfile = () => {
   const updateProfileSubmit = (e) => {
     e.preventDefault();
 
-    const myForm = new FormData();
+    // const myForm = new FormData();
 
-    myForm.set("name", name);
-    myForm.set("email", email);
-    dispatch(updateProfile(myForm));
+    // myForm.set("name", name);
+    // myForm.set("email", email);
+    dispatch(updateProfile(name, email));
   };
 
   console.log(updateProfileSubmit)
 
   useEffect(() => {
-    if (user) {
-      setName(user.user.name);
-      setEmail(user.user.email);
+    if(user) {
+      setName(user.name);
+      setEmail(user.email);
     }
 
     if (error) {
@@ -53,6 +52,7 @@ const UpdateProfile = () => {
       });
     }
   }, [dispatch, error, user, isUpdated, navigate]);
+  console.log(user)
 
 
   return ( <>
@@ -68,7 +68,6 @@ const UpdateProfile = () => {
 
             <form
               className="updateProfileForm"
-              encType="multipart/form-data"
               onSubmit={updateProfileSubmit}
             >
               <div className="updateProfileName">

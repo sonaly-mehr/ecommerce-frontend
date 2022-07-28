@@ -32,7 +32,7 @@ export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-    const { data } = await axios.get("http://localhost:4000/api/admin/products");
+    const { data } = await axios.get("http://localhost:4000/api/admin/products", { withCredentials: true });
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
@@ -48,17 +48,18 @@ export const getAdminProduct = () => async (dispatch) => {
 
 
 // Create Product
-export const createProduct = (productData) => async (dispatch) => {
+export const createProduct = (name, price, description, category, stock) => async (dispatch) => {
   try {
     dispatch({ type: NEW_PRODUCT_REQUEST });
 
     const config = {
-      headers: { 'content-type': 'multipart/form-data'},
+      headers: { 'content-type': "application/json"},
     };
 
     const { data } = await axios.post(
       'http://localhost:4000/api/product/add',
-      productData,
+      {name, price, description, category, stock},
+      { withCredentials: true },
       config
     );
 
@@ -76,7 +77,7 @@ export const createProduct = (productData) => async (dispatch) => {
 
 
 // Update Product
-export const updateProduct = (id, productData) => async (dispatch) => {
+export const updateProduct = (id, name, price, description, category, Stock) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PRODUCT_REQUEST });
 
@@ -86,7 +87,8 @@ export const updateProduct = (id, productData) => async (dispatch) => {
 
     const { data } = await axios.put(
       `http://localhost:4000/api/product/${id}`,
-      productData,
+      {name, price, description, category, Stock},
+      { withCredentials: true },
       config
     );
 
@@ -108,7 +110,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
-    const { data } = await axios.delete(`http://localhost:4000/api/product/${id}`);
+    const { data } = await axios.delete(`http://localhost:4000/api/product/${id}`, { withCredentials: true });
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -127,7 +129,7 @@ export const getProductDetails = (id) => async(dispatch) => {
     try {
         dispatch({type: PRODUCT_DETAILS_REQUEST});
 
-        const {data} = await axios.get(`http://localhost:4000/api/product/${id}`)
+        const {data} = await axios.get(`http://localhost:4000/api/product/${id}`, { withCredentials: true })
 
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
@@ -144,7 +146,7 @@ export const getProductDetails = (id) => async(dispatch) => {
 
 
 // NEW REVIEW
-export const newReview = (reviewData) => async (dispatch) => {
+export const newReview = (productId, rating, comment) => async (dispatch) => {
     try {
       dispatch({ type: NEW_REVIEW_REQUEST });
   
@@ -152,7 +154,11 @@ export const newReview = (reviewData) => async (dispatch) => {
         headers: { "Content-Type": "application/json" },
       };
   
-      const { data } = await axios.post('http://localhost:4000/api/product/review', reviewData, config);
+      const { data } = await axios.post(
+        'http://localhost:4000/api/product/review', 
+        {productId, rating, comment}, 
+        { withCredentials: true },
+        config);
   
       dispatch({
         type: NEW_REVIEW_SUCCESS,
@@ -172,7 +178,7 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
 
-    const { data } = await axios.get(`http://localhost:4000/api/reviews?id=${id}`);
+    const { data } = await axios.get(`http://localhost:4000/api/reviews?id=${id}`,{ withCredentials: true });
 
     dispatch({
       type: ALL_REVIEW_SUCCESS,
@@ -193,7 +199,7 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
     dispatch({ type: DELETE_REVIEW_REQUEST });
 
     const { data } = await axios.delete(
-      `http://localhost:4000/api/reviews?id=${reviewId}&productId=${productId}`
+      `http://localhost:4000/api/reviews?id=${reviewId}&productId=${productId}`, { withCredentials: true }
     );
 
     dispatch({

@@ -3,24 +3,24 @@ import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./ProcessOrder.css";
 import Sidebar from "./Sidebar";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { getOrderDetails, updateOrder } from "../../Redux/Actions/OrderAction";
 import { Link, useParams } from "react-router-dom";
 import { UPDATE_ORDER_RESET } from "../../Redux/Constants/OrderConstants";
 
 const ProcessOrder = () => {
-    const params = useParams()
-    const dispatch = useDispatch();
-const [status, setStatus] = useState("");
+  const params = useParams();
+  const dispatch = useDispatch();
+  const [status, setStatus] = useState("");
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
 
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
-    const myForm = new FormData();
+    // const myForm = new FormData();
 
-    myForm.set("status", status);
-    dispatch(updateOrder(params.id, myForm));
+    // myForm.set("status", status);
+    dispatch(updateOrder(params.id, status));
   };
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const [status, setStatus] = useState("");
       alert("Order Updated Successfully");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
-    
+
     dispatch(getOrderDetails(params.id));
   }, [dispatch, error, params.id, isUpdated, updateError]);
 
@@ -44,9 +44,15 @@ const [status, setStatus] = useState("");
         <Sidebar />
         <div className="newProductContainer">
           {loading ? (
-            <Box sx={{ display: "flex", justifyContent:'center', marginTop:'20%'}}>
-            <CircularProgress />
-          </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "20%",
+              }}
+            >
+              <CircularProgress />
+            </Box>
           ) : (
             <div
               className="confirmOrderPage"

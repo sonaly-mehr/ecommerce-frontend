@@ -60,13 +60,13 @@ const ProductDetail = () => {
   };
 
   const reviewSubmitHandler = () => {
-    const myForm = new FormData();
+    // const myForm = new FormData();
 
-    myForm.set("rating", rating);
-    myForm.set("comment", comment);
-    myForm.set("productId", params.id);
-
-    dispatch(newReview(myForm));
+    // myForm.set("rating", rating);
+    // myForm.set("comment", comment);
+    // myForm.set("productId", params.id);
+    const productId = params.id
+    dispatch(newReview(productId, rating, comment));
 
     setOpen(false);
   };

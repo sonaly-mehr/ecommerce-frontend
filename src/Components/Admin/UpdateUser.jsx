@@ -28,13 +28,13 @@ const UpdateUser = () => {
   const updateUserSubmitHandler = (e) => {
     e.preventDefault();
 
-    const myForm = new FormData();
+    // const myForm = new FormData();
 
-    myForm.set("name", name);
-    myForm.set("email", email);
-    myForm.set("role", role);
+    // myForm.set("name", name);
+    // myForm.set("email", email);
+    // myForm.set("role", role);
 
-    dispatch(updateUser(userId, myForm));
+    dispatch(updateUser(userId, name, email, role));
   };
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const UpdateUser = () => {
       setRole(user.role);
     }
     if (error) {
-      alert(error);
+      console.log(error);
     }
 
     if (updateError) {

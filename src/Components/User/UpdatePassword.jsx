@@ -20,13 +20,13 @@ const UpdatePassword = () => {
   const updatePasswordSubmit = (e) => {
     e.preventDefault();
 
-    const myForm = new FormData();
+    // const myForm = new FormData();
 
-    myForm.set("oldPassword", oldPassword);
-    myForm.set("newPassword", newPassword);
-    myForm.set("confirmPassword", confirmPassword);
+    // myForm.set("oldPassword", oldPassword);
+    // myForm.set("newPassword", newPassword);
+    // myForm.set("confirmPassword", confirmPassword);
 
-    dispatch(updatePassword(myForm));
+    dispatch(updatePassword(oldPassword, newPassword, confirmPassword));
   };
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const UpdatePassword = () => {
     }
 
     if (isUpdated) {
-      alert.success("Profile Updated Successfully");
+      alert("Profile Updated Successfully");
 
       navigate("/user/profile");
 

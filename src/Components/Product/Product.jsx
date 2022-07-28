@@ -13,12 +13,12 @@ import ProductCard from "../Home/ProductCard";
 const categories = [
   "Laptop",
   "Footwear",
-  "Bottom",
+  "Headset",
   "Tops",
-  "Attire",
+  "Sunglass",
   "Camera",
   "SmartPhones",
-  "test"
+  "Watch"
 ];
 
 const Product = () => {

@@ -15,7 +15,7 @@ const ProductCard = (props) => {
   return (
       <Grid item xs={12} md={3}>
         <Link className="productCard" to={`/product/${_id}`}>
-          {images ? <img src={images[0].url} alt="" /> : <img src={cardImg} alt="" /> }
+          {images[0]? <img src={images[0].url} alt="" /> : <img src={cardImg} alt="" /> }
     
           <p>{name}</p>
           <div>

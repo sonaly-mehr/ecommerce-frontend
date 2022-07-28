@@ -21,17 +21,10 @@ const LoginSignup = () => {
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  const { name, email, password } = user;
-
-  // const [avatar, setAvatar] = useState("/Profile.png");
-  // const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
   const loginSubmit = (e) => {
     e.preventDefault();
@@ -41,39 +34,27 @@ const LoginSignup = () => {
   const registerSubmit = (e) => {
     e.preventDefault();
 
-    const myForm = new FormData();
+    // const myForm = new FormData();
 
-    myForm.set("name", name);
-    myForm.set("email", email);
-    myForm.set("password", password);
-    // myForm.set("avatar", avatar);
-    dispatch(register(myForm));
+    // myForm.set("name", name);
+    // myForm.set("email", email);
+    // myForm.set("password", password);
+    dispatch(register(name, email, password));
   };
 
-  const registerDataChange = (e) => {
-    // if (e.target.name === "avatar") {
-    //   const reader = new FileReader();
-
-    //   reader.onload = () => {
-    //     if (reader.readyState === 2) {
-    //       setAvatarPreview(reader.result);
-    //       setAvatar(reader.result);
-    //     }
-    //   };
-
-    //   reader.readAsDataURL(e.target.files[0]);
-    // } else {
-      setUser({ ...user, [e.target.name]: e.target.value });
-    }
+  console.log(name, email, password)
+  // const registerDataChange = (e) => {
+  //     setUser({ ...user, [e.target.name]: e.target.value });
+  //   }
   
 
     const redirect = location.search ? location.search.split("=")[1] : "/user/profile";
 
   useEffect(() => {
-    // if (error) {
-    //   alert(error);
-    //   // dispatch(clearErrors());
-    // }
+    if (error) {
+      alert(error);
+      // dispatch(clearErrors());
+    }
 
     if (isAuthenticated) {
       navigate(redirect);
@@ -141,7 +122,6 @@ const LoginSignup = () => {
               <form
                 className="signUpForm"
                 ref={registerTab}
-                encType="multipart/form-data"
                 onSubmit={registerSubmit}
               >
                 <div className="signUpName">
@@ -152,7 +132,7 @@ const LoginSignup = () => {
                     required
                     name="name"
                     value={name}
-                    onChange={registerDataChange}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="signUpEmail">
@@ -163,7 +143,7 @@ const LoginSignup = () => {
                     required
                     name="email"
                     value={email}
-                    onChange={registerDataChange}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div className="signUpPassword">
@@ -174,19 +154,10 @@ const LoginSignup = () => {
                     required
                     name="password"
                     value={password}
-                    onChange={registerDataChange}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
 
-                {/* <div id="registerImage">
-                  <img src={avatarPreview} alt="Avatar Preview" />
-                  <input
-                    type="file"
-                    name="avatar"
-                    accept="image/*"
-                    onChange={registerDataChange}
-                  />
-                </div> */}
                 <input type="submit" value="Register" className="signUpBtn" />
               </form>
             </div>
