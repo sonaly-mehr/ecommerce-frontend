@@ -4,7 +4,7 @@ import { ADD_TO_CART, REMOVE_CART_ITEM, SAVE_SHIPPING_INFO } from "../Constants/
 
 //Add to cart
 export const addItemToCart = (id, quantity) => async(dispatch, getState) => {
-    const {data} = await axios.get(`http://localhost:4000/api/product/${id}`);
+    const {data} = await axios.get(`https://still-cliffs-00624.herokuapp.com/api/product/${id}`);
 
     dispatch({
         type: ADD_TO_CART,

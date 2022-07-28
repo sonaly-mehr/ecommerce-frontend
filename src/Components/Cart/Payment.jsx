@@ -52,7 +52,7 @@ const Payment = () => {
         },
       };
       const { data } = await axios.post(
-        "http://localhost:4000/api/payment/process",
+        "https://still-cliffs-00624.herokuapp.com/api/payment/process",
         paymentData,
         config
       );

@@ -6,10 +6,10 @@ export const getProducts = (keyword = "", currentPage = 1, price=[0, 2000], cate
     try {
         dispatch({type:ALL_PRODUCT_REQUEST});
 
-        let link = `http://localhost:4000/api/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+        let link = `https://still-cliffs-00624.herokuapp.com/api/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
         
         if (category) {
-            link = `http://localhost:4000/api/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+            link = `https://still-cliffs-00624.herokuapp.com/api/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
           }
 
         const { data } = await axios.get(link)
@@ -32,7 +32,7 @@ export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-    const { data } = await axios.get("http://localhost:4000/api/admin/products", { withCredentials: true });
+    const { data } = await axios.get("https://still-cliffs-00624.herokuapp.com/api/admin/products", { withCredentials: true });
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
@@ -57,7 +57,7 @@ export const createProduct = (name, price, description, category, stock) => asyn
     };
 
     const { data } = await axios.post(
-      'http://localhost:4000/api/product/add',
+      'https://still-cliffs-00624.herokuapp.com/api/product/add',
       {name, price, description, category, stock},
       { withCredentials: true },
       config
@@ -86,7 +86,7 @@ export const updateProduct = (id, name, price, description, category, Stock) => 
     };
 
     const { data } = await axios.put(
-      `http://localhost:4000/api/product/${id}`,
+      `https://still-cliffs-00624.herokuapp.com/api/product/${id}`,
       {name, price, description, category, Stock},
       { withCredentials: true },
       config
@@ -110,7 +110,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
-    const { data } = await axios.delete(`http://localhost:4000/api/product/${id}`, { withCredentials: true });
+    const { data } = await axios.delete(`https://still-cliffs-00624.herokuapp.com/api/product/${id}`, { withCredentials: true });
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -129,7 +129,7 @@ export const getProductDetails = (id) => async(dispatch) => {
     try {
         dispatch({type: PRODUCT_DETAILS_REQUEST});
 
-        const {data} = await axios.get(`http://localhost:4000/api/product/${id}`, { withCredentials: true })
+        const {data} = await axios.get(`https://still-cliffs-00624.herokuapp.com/api/product/${id}`, { withCredentials: true })
 
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
@@ -155,7 +155,7 @@ export const newReview = (productId, rating, comment) => async (dispatch) => {
       };
   
       const { data } = await axios.post(
-        'http://localhost:4000/api/product/review', 
+        'https://still-cliffs-00624.herokuapp.com/api/product/review', 
         {productId, rating, comment}, 
         { withCredentials: true },
         config);
@@ -178,7 +178,7 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
 
-    const { data } = await axios.get(`http://localhost:4000/api/reviews?id=${id}`,{ withCredentials: true });
+    const { data } = await axios.get(`https://still-cliffs-00624.herokuapp.com/api/reviews?id=${id}`,{ withCredentials: true });
 
     dispatch({
       type: ALL_REVIEW_SUCCESS,
@@ -199,7 +199,7 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
     dispatch({ type: DELETE_REVIEW_REQUEST });
 
     const { data } = await axios.delete(
-      `http://localhost:4000/api/reviews?id=${reviewId}&productId=${productId}`, { withCredentials: true }
+      `https://still-cliffs-00624.herokuapp.com/api/reviews?id=${reviewId}&productId=${productId}`, { withCredentials: true }
     );
 
     dispatch({

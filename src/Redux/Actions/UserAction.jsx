@@ -9,7 +9,7 @@ export const login = (email, password) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post(
-      'http://localhost:4000/api/user/login',
+      'https://still-cliffs-00624.herokuapp.com/api/user/login',
       { email, password },
       { withCredentials: true },
       config
@@ -29,7 +29,7 @@ export const register = (name, email, password) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post(
-      'http://localhost:4000/api/user/register', 
+      'https://still-cliffs-00624.herokuapp.com/api/user/register', 
       { name, email, password }, 
       { withCredentials: true },
       config);
@@ -48,7 +48,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get('http://localhost:4000/api/user/profile', { withCredentials: true });
+    const { data } = await axios.get('https://still-cliffs-00624.herokuapp.com/api/user/profile', { withCredentials: true });
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -59,7 +59,7 @@ export const loadUser = () => async (dispatch) => {
 // Logout User
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get('http://localhost:4000/api/user/logout');
+    await axios.get('https://still-cliffs-00624.herokuapp.com/api/user/logout');
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
@@ -75,7 +75,7 @@ export const updateProfile = (name, email) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.put(
-      'http://localhost:4000/api/profile/update', 
+      'https://still-cliffs-00624.herokuapp.com/api/profile/update', 
       { name, email},
       { withCredentials: true }, 
       config);
@@ -97,7 +97,7 @@ export const updatePassword = (oldPassword, newPassword, confirmPassword) => asy
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.put(
-      'http://localhost:4000/api/password/update',
+      'https://still-cliffs-00624.herokuapp.com/api/password/update',
       {oldPassword, newPassword, confirmPassword},
       { withCredentials: true },
       config
@@ -117,7 +117,7 @@ export const updatePassword = (oldPassword, newPassword, confirmPassword) => asy
 export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
-    const { data } = await axios.get('http://localhost:4000/api/admin/users', { withCredentials: true });
+    const { data } = await axios.get('https://still-cliffs-00624.herokuapp.com/api/admin/users', { withCredentials: true });
 
     dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
   } catch (error) {
@@ -129,7 +129,7 @@ export const getAllUsers = () => async (dispatch) => {
 export const getUserDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: USER_DETAILS_REQUEST });
-    const { data } = await axios.get(`http://localhost:4000/api/admin/user/${id}`, { withCredentials: true });
+    const { data } = await axios.get(`https://still-cliffs-00624.herokuapp.com/api/admin/user/${id}`, { withCredentials: true });
 
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data.user });
   } catch (error) {
@@ -145,7 +145,7 @@ export const updateUser = (id, name, email, role) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.put(
-      `http://localhost:4000/api/admin/user/${id}`,
+      `https://still-cliffs-00624.herokuapp.com/api/admin/user/${id}`,
       {name, email, role},
       { withCredentials: true },
       config
@@ -165,7 +165,7 @@ export const deleteUser = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_USER_REQUEST });
 
-    const { data } = await axios.delete(`http://localhost:4000/api/admin/user/${id}`, { withCredentials: true });
+    const { data } = await axios.delete(`https://still-cliffs-00624.herokuapp.com/api/admin/user/${id}`, { withCredentials: true });
 
     dispatch({ type: DELETE_USER_SUCCESS, payload: data });
   } catch (error) {

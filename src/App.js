@@ -47,7 +47,7 @@ function App() {
   // const [stripeApiKey, setStripeApiKey] = useState("");
   const stripePromise = loadStripe('pk_test_51IeF2FDWdYPFaGFdcB4l7ZnOYxuVEToaYpUgLehHupf7KUBNSlAzbuCd7Y3oaObJaE1QlOGwDS55LrNZeU2gsgW3008PyxC6sG');
   // async function getStripeApiKey() {
-  //   const { data } = await axios.get("http://localhost:4000/api/stripeapikey");
+  //   const { data } = await axios.get("https://still-cliffs-00624.herokuapp.com/api/stripeapikey");
 
   //   setStripeApiKey(data.stripeApiKey);
   // }
