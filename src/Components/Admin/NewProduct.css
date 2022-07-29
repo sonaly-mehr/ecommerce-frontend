@@ -100,6 +100,9 @@
   #createProductBtn:hover {
     background-color: rgb(179, 66, 46);
   }
+  .css-v39qiq .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight) > .MuiDataGrid-cell {
+    justify-content: center !important;
+  }
   
   @media screen and (max-width: 600px) {
     .newProductContainer {

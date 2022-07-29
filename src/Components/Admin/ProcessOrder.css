@@ -26,6 +26,9 @@
     font-size: 1.6vmax;
     color: rgba(0, 0, 0, 0.623);
   }
+  .css-v39qiq .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight) > .MuiDataGrid-cell {
+    justify-content: center !important;
+  }
   html.wf-roboto-n4-active.wf-droidsans-n4-active.wf-chilanka-n4-active.wf-active body div#root div.dashboard div.newProductContainer div.confirmOrderPage div form.updateOrderForm div select{
     padding: 10px 35px;
   }

@@ -47,7 +47,9 @@
   .MuiDataGrid-columnHeader div {
     color: rgb(255, 255, 255);
   }
-  
+  .css-v39qiq .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight) > .MuiDataGrid-cell {
+    justify-content: center !important;
+  }
   @media screen and (max-width: 600px) {
     .productListTable div {
       font: 300 4vw "Roboto";

@@ -45,7 +45,9 @@
     font-size: 1.6vmax;
     color: rgba(0, 0, 0, 0.623);
   }
-  
+  .css-v39qiq .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight) > .MuiDataGrid-cell {
+    justify-content: center !important;
+  }
   @media screen and (max-width: 600px) {
     .productReviewsContainer {
       border-left: none;
