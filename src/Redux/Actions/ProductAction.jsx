@@ -21,7 +21,7 @@ export const getProducts = (keyword = "", currentPage = 1, price=[0, 2000], cate
     catch (error) {
         dispatch({
             type:ALL_PRODUCT_FAIL,
-            payload: error.message
+            payload: error.response.data.message
         })
     }
 }
@@ -77,7 +77,7 @@ export const createProduct = (name, price, description, category, stock) => asyn
 
 
 // Update Product
-export const updateProduct = (id, name, price, description, category, Stock) => async (dispatch) => {
+export const updateProduct = (id, name, price, description, category, stock) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PRODUCT_REQUEST });
 
@@ -87,7 +87,7 @@ export const updateProduct = (id, name, price, description, category, Stock) => 
 
     const { data } = await axios.put(
       `https://still-cliffs-00624.herokuapp.com/api/product/${id}`,
-      {name, price, description, category, Stock},
+      {name, price, description, category, stock},
       { withCredentials: true },
       config
     );
@@ -119,7 +119,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: DELETE_PRODUCT_FAIL,
-      // payload: error,
+      payload: error.response.data.message
     });
   }
 };
@@ -139,7 +139,7 @@ export const getProductDetails = (id) => async(dispatch) => {
     } catch (error) {
         dispatch({
             type:PRODUCT_DETAILS_FAIL,
-            payload: error.message
+            payload: error.response.data.message
         })
     }
 }

@@ -123,7 +123,7 @@ const ProcessOrder = () => {
                   </div>
                 </div>
                 <div className="confirmCartItems">
-                  <Typography>Your Cart Items:</Typography>
+                  <Typography>Cart Items:</Typography>
                   <div className="confirmCartItemsContainer">
                     {order.orderItems &&
                       order.orderItems.map((item) => (
@@ -133,8 +133,8 @@ const ProcessOrder = () => {
                             {item.name}
                           </Link>{" "}
                           <span>
-                            {item.quantity} X ₹{item.price} ={" "}
-                            <b>₹{item.price * item.quantity}</b>
+                            {item.quantity} X ${item.price} ={" "}
+                            <b>${item.price * item.quantity}</b>
                           </span>
                         </div>
                       ))}
@@ -155,7 +155,7 @@ const ProcessOrder = () => {
 
                   <div>
                     <AccountTree />
-                    <select onChange={(e) => setStatus(e.target.value)}>
+                    <select value={status} onChange={(e) => setStatus(e.target.value)}>
                       <option value="">Choose Category</option>
                       {order.orderStatus === "Processing" && (
                         <option value="Shipped">Shipped</option>

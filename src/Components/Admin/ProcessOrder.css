@@ -29,7 +29,12 @@
   html.wf-roboto-n4-active.wf-droidsans-n4-active.wf-chilanka-n4-active.wf-active body div#root div.dashboard div.newProductContainer div.confirmOrderPage div form.updateOrderForm div select{
     padding: 10px 35px;
   }
-  
+  .greenColor{
+    color:green !important;
+  }
+  .redColor{
+    color:red !important
+  }
   @media screen and (max-width: 600px) {
     .updateOrderForm {
       padding: 5vmax;
